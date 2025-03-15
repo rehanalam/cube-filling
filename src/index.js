@@ -9,7 +9,7 @@ const inputMockData = [
     [1, 1, 9, 9, 1]
 ];
 
-function generateCubesWithDim(cubes) {
+function computeCubeData(cubes) {
     return cubes.map((cube, index) => {
         return { 
             quantity: cube, 
@@ -20,9 +20,22 @@ function generateCubesWithDim(cubes) {
 
 function minCubeFilling(box, cubes) {
     const [boxL, boxW, boxH] = box;
-    const cubesData = generateCubesWithDim(cubes);
-    console.log(cubesData);
+    let boxVolume = boxL * boxH * boxW;
+    const cubesData = computeCubeData(cubes);
+    let cubesUsed = 0;
 
+    for(const cube of cubesData) {
+        const { quantity, size } = cube;
+        const cubeVolume = size ** 3;
+
+        let maxCubesToUse = Math.min(quantity, Math.floor(boxVolume / cubeVolume));
+        cubesUsed += maxCubesToUse;
+        boxVolume -= maxCubesToUse * cubeVolume;
+
+        if(boxVolume <= 0) break;
+    }
+
+    return cubesUsed
 
 }
 
@@ -33,7 +46,7 @@ function computeInput(input) {
         const cubes = row.slice(3);
 
         const result = minCubeFilling(box, cubes);
-        result.push(result);
+        results.push(result);
     }
 
     return results;

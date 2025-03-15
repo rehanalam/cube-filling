@@ -21,7 +21,7 @@ function computeCubeData(cubes) {
 function minCubeFilling(box, cubes) {
     const [boxL, boxW, boxH] = box;
     let boxVolume = boxL * boxH * boxW;
-    const cubesData = computeCubeData(cubes);
+    const cubesData = computeCubeData(cubes).reverse();
     let cubesUsed = 0;
 
     for(const cube of cubesData) {
@@ -35,7 +35,7 @@ function minCubeFilling(box, cubes) {
         if(boxVolume <= 0) break;
     }
 
-    return cubesUsed
+    return cubesUsed;
 
 }
 

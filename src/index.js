@@ -9,9 +9,20 @@ const inputMockData = [
     [1, 1, 9, 9, 1]
 ];
 
+function generateCubesWithDim(cubes) {
+    return cubes.map((cube, index) => {
+        return { 
+            quantity: cube, 
+            size: 2 ** index 
+        }
+    });
+}
+
 function minCubeFilling(box, cubes) {
     const [boxL, boxW, boxH] = box;
-    
+    const cubesData = generateCubesWithDim(cubes);
+    console.log(cubesData);
+
 
 }
 

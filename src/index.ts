@@ -40,7 +40,7 @@ function minCubeFilling(box: number[], cubes: number[]): number {
         if(boxVolume <= 0) break;
     }
 
-    return cubesUsed
+    return boxVolume > 0 ? -1 : cubesUsed;
 
 }
 

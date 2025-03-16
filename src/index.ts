@@ -6,6 +6,7 @@ interface ICube {
     size: number;
 }
 
+// Calculates cubes data with qunatity and size
 function computeCubeData(cubes: number[]): ICube[] {
     return cubes.map((cube, index) => {
         return { 
@@ -15,6 +16,7 @@ function computeCubeData(cubes: number[]): ICube[] {
     });
 }
 
+// Calculates the minimum number of cubes needed to fill a given box.
 function minCubeFilling(box: number[], cubes: number[]): number {
     const [boxL, boxW, boxH] = box;
     let boxVolume = boxL * boxH * boxW;
@@ -39,8 +41,8 @@ function minCubeFilling(box: number[], cubes: number[]): number {
 function computeInput(input: number[][]): number[] {
     const results: number[] = [];
     for(let row of input) {
-        const box = row.slice(0,3);
-        const cubes = row.slice(3);
+        const box = row.slice(0,3); // extract box dimensions
+        const cubes = row.slice(3); // extract available cubes
 
         const result = minCubeFilling(box, cubes);
         results.push(result);
@@ -49,7 +51,7 @@ function computeInput(input: number[][]): number[] {
     return results;
 }
 
-
+// Reads problem.txt and returns its content as a 2D array.
 function readDataFromFile(filename: string): number[][] {
     const filePath = path.resolve(__dirname, filename);
     const data = fs.readFileSync(filePath, 'utf8');

@@ -1,5 +1,10 @@
 
-const inputMockData = [
+interface ICube {
+    quantity: number;
+    size: number;
+}
+
+const inputMockData: (number[])[] = [
     [10, 10, 10, 2000],
     [10, 10, 10, 900],
     [4, 4, 8, 10, 10, 1],
@@ -9,7 +14,7 @@ const inputMockData = [
     [1, 1, 9, 9, 1]
 ];
 
-function computeCubeData(cubes) {
+function computeCubeData(cubes: number[]): ICube[] {
     return cubes.map((cube, index) => {
         return { 
             quantity: cube, 
@@ -18,7 +23,7 @@ function computeCubeData(cubes) {
     });
 }
 
-function minCubeFilling(box, cubes) {
+function minCubeFilling(box: number[], cubes: number[]): number {
     const [boxL, boxW, boxH] = box;
     let boxVolume = boxL * boxH * boxW;
     const cubesData = computeCubeData(cubes).reverse();
@@ -35,12 +40,12 @@ function minCubeFilling(box, cubes) {
         if(boxVolume <= 0) break;
     }
 
-    return cubesUsed;
+    return cubesUsed
 
 }
 
-function computeInput(input) {
-    const results = [];
+function computeInput(input: number[][]): number[] {
+    const results: number[] = [];
     for(let row of input) {
         const box = row.slice(0,3);
         const cubes = row.slice(3);

@@ -70,3 +70,25 @@ Where:
 - 2500 cubes are used to fill the first box,
 - 450 cubes are used to fill the second box.
 
+
+# Following Test Cases Failing
+
+### Input 1:
+```
+ 5 5 5 61 7 1
+```
+
+### Expected Output: `62`
+### Actual Output: `13`
+
+### Input 1:
+```
+ 1 1 9 9 1
+```
+
+### Expected Output: `2`
+### Actual Output: `9`
+
+**Reasoning**: I some cases This issue arises due to the way cubes are chosen based on the available space in the box.  With more time, we can improve the way cubes are selected to make sure the box gets filled in the best way possible.
+
+

@@ -1,7 +1,3 @@
-Here's a sample README for your project:
-
----
-
 # Cube Filling Problem
 
 This project solves the "Cube Filling Problem," where the goal is to determine the smallest number of cubes needed to completely fill a given box. The cubes come in different sizes, and the challenge is to pack them optimally.

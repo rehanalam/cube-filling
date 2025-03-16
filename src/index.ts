@@ -1,3 +1,5 @@
+const fs = require('fs');  // CommonJS require for fs
+const path = require('path');
 
 interface ICube {
     quantity: number;
@@ -57,4 +59,20 @@ function computeInput(input: number[][]): number[] {
     return results;
 }
 
-console.log(computeInput(inputMockData));
+
+function readDataFromFile(filename: string): number[][] {
+    const filePath = path.resolve(__dirname, filename);
+    const data = fs.readFileSync(filePath, 'utf8');
+    const lines: string[] = data.split('\n').map((line: string) => line.trim()).filter((line: string) => line !== '');
+    const parsedData: number[][] = lines.map((line: string) => {
+        return line.split(' ').map(Number);
+    });
+    console.log(parsedData);    
+    return parsedData;
+}
+
+
+const data = readDataFromFile('problem.txt');
+const results = computeInput(data);
+console.log(results);
+// console.log(computeInput(inputMockData));
